@@ -18,17 +18,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var TextContainer_1 = __importDefault(require("./TextContainer"));
 var RootContainer_1 = require("./RootContainer");
-var CreateContainer = function () {
-    console.log("update createcontainer!");
-    var dispatch = react_1.useContext(RootContainer_1.DispatchContext);
+var DeleteContainer = function (_a) {
+    var Id = _a.Id, Text = _a.Text;
+    var dispatch = react_1.useContext(RootContainer_1.DispatchContext).dispatch;
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(TextContainer_1.default, null)));
+        react_1.default.createElement("span", null,
+            Id,
+            Text,
+            react_1.default.createElement("button", { type: "submit", onClick: function () {
+                    dispatch({
+                        type: "delete",
+                        id: Id,
+                        text: "",
+                        doUpdate: false,
+                    });
+                } }, "\u00D7"))));
 };
-exports.default = CreateContainer;
+exports.default = DeleteContainer;

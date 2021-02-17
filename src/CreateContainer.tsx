@@ -1,14 +1,11 @@
-import React, { useContext } from 'react'
-import TextContainer from './TextContainer'
-import {DispatchContext,dispatchInterface} from './RootContainer'
+import React from "react";
+import TextContainer from "./TextContainer";
 
 const CreateContainer: React.FC = (): JSX.Element => {
-  console.log("update createcontainer!");
-  const dispatch: dispatchInterface = useContext(DispatchContext);
-  return(
+  return (
     <>
       <TextContainer />
     </>
-  )
-}
+  );
+};
 export default CreateContainer;

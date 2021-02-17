@@ -28,13 +28,12 @@ var RootContainer_1 = require("./RootContainer");
 var UpdateContainer_1 = __importDefault(require("./UpdateContainer"));
 var TodoContainer = function () {
     var state = react_1.useContext(RootContainer_1.IndexState);
-    return (react_1.default.createElement(react_1.default.Fragment, null, state.map(function (todo) {
-        if (todo.id > 0) {
-            return (react_1.default.createElement("div", { key: todo.id },
-                react_1.default.createElement(DeleteContainer_1.default, { Id: todo.id, Text: todo.text }),
-                react_1.default.createElement("span", null, "  "),
-                react_1.default.createElement(UpdateContainer_1.default, { Id: todo.id })));
-        }
-    })));
+    var HtmlIndex = state
+        .filter(function (todo) { return todo.id > 0; })
+        .map(function (todo) { return (react_1.default.createElement("div", { key: todo.id },
+        react_1.default.createElement(DeleteContainer_1.default, { Id: todo.id, Text: todo.text }),
+        react_1.default.createElement("span", null, " "),
+        react_1.default.createElement(UpdateContainer_1.default, { Id: todo.id }))); });
+    return react_1.default.createElement(react_1.default.Fragment, null, HtmlIndex);
 };
 exports.default = TodoContainer;

@@ -22,7 +22,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var RootContainer_1 = require("./RootContainer");
 var TextContainer = function () {
-    console.log("update textcontainer!");
     var _a = react_1.useState(""), valueText = _a[0], setValueText = _a[1];
     function textChange(e) {
         setValueText(e.target.value);
@@ -31,26 +30,25 @@ var TextContainer = function () {
     var dispatch = react_1.useContext(RootContainer_1.DispatchContext).dispatch;
     function handleClick() {
         dispatch({
-            type: 'create',
+            type: "create",
             id: state.length,
             text: valueText,
-            doUpdate: false
+            doUpdate: false,
         });
         setValueText("");
     }
     state.forEach(function (element) {
         if (element.doUpdate) {
-            ;
             dispatch({
-                type: 'update',
+                type: "update",
                 id: element.id,
                 text: valueText,
-                doUpdate: false
+                doUpdate: false,
             });
         }
     });
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("input", { type: "text", onChange: textChange, value: valueText }),
-        react_1.default.createElement("button", { onClick: handleClick }, "+")));
+        react_1.default.createElement("button", { onClick: handleClick, type: "submit" }, "+")));
 };
 exports.default = TextContainer;
